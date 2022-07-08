@@ -7268,9 +7268,9 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-terminal@^1.2.7:
+retermino@^1.2.7:
   version "1.2.7"
-  resolved "https://registry.yarnpkg.com/react-terminal/-/react-terminal-1.2.7.tgz#5a6e3c5f0bd66bc6adbe664a8838c9aeabef981f"
+  resolved "https://registry.yarnpkg.com/retermino/-/retermino-1.2.7.tgz#5a6e3c5f0bd66bc6adbe664a8838c9aeabef981f"
   integrity sha512-7pbNxQgdHbIfJSzZ72feWbKRJBaYzFWJdR3rQ4J+wNMuparSQQliXyIR9mOkyr832qE9gnAl4qHxybakkkSa3A==
   dependencies:
     prop-types "^15.7.2"

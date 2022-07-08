@@ -1,7 +1,7 @@
 import * as React from "react";
 import './App.css';
-import { TerminalContextProvider } from "react-terminal";
-import { ReactTerminal } from "react-terminal";
+import { TerminalContextProvider } from "retermino";
+import { ReactTerminal } from "retermino";
 
 function App() {
   const [theme, setTheme] = React.useState("light");

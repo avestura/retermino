@@ -1,5 +1,5 @@
 {
-  "name": "react-terminal",
+  "name": "retermino",
   "version": "v1.2.8",
   "description": "React component that renders a terminal",
   "main": "dist/index.js",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bony2023/react-terminal.git"
+    "url": "git+https://github.com/avestura/retermino.git"
   },
   "keywords": [
     "node",
@@ -29,9 +29,9 @@
   "author": "Bony Roopchandani",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bony2023/react-terminal/issues"
+    "url": "https://github.com/avestura/retermino/issues"
   },
-  "homepage": "https://github.com/bony2023/react-terminal#readme",
+  "homepage": "https://github.com/avestura/retermino#readme",
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^14.2.0",
