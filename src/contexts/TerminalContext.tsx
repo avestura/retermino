@@ -1,9 +1,12 @@
-import * as React from "react";
+import React from "react";
 
 export const TerminalContext = React.createContext(null);
 
-export const TerminalContextProvider = (props: any) => {
-  const { children } = props;
+type TerminalContextProviderProps = {
+  children: React.ReactNode
+}
+
+export const TerminalContextProvider = ({ children }: TerminalContextProviderProps) => {
   const [bufferedContent, setBufferedContent] = React.useState("");
   const [commandsHistory, setCommandsHistory] = React.useState([]);
   const [historyPointer, setHistoryPointer] = React.useState(null);

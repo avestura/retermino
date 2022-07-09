@@ -1,18 +1,18 @@
-import * as React from "react";
+import React from "react";
 import * as style from "../index.scss";
 
 export const styles = style.default;
 export const StyleContext = React.createContext(null);
 
-export const StyleContextProvider = (props: any) => {
-  const { children } = props;
+type StyleContextProviderProps = {
+  children: React.ReactNode
+}
 
-  return (
+export const StyleContextProvider = ({ children }: StyleContextProviderProps) => (
     <StyleContext.Provider value={styles}>
       {children}
     </StyleContext.Provider>
   );
-};
 
 export default {
   StyleContext,

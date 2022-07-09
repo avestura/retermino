@@ -19,6 +19,9 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "linebreak-style": ["error", "windows"],
+    "react/require-default-props": "off",
+    "no-unused-vars": "warn",
     "react/jsx-filename-extension": [
       2,
       {

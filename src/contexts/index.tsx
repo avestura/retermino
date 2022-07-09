@@ -1,10 +1,12 @@
-import * as React from "react";
+import React from "react";
 import { StyleContextProvider } from "./StyleContext";
 import { ThemeContextProvider } from "./ThemeContext";
 
-export default function ContextProvider(props: any) {
-  const { children } = props;
+type ContextProviderProps = {
+  children: React.ReactNode
+}
 
+export default function ContextProvider({ children }: ContextProviderProps) {
   return (
     <StyleContextProvider>
       <ThemeContextProvider>
