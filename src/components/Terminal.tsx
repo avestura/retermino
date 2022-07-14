@@ -12,11 +12,10 @@ export type TerminalProps = Partial<EditorProps> & {
 };
 
 export default function Terminal(props: TerminalProps) {
-  const wrapperRef = React.useRef(null);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
   const [consoleFocused, setConsoleFocused] = React.useState(!isMobile);
   const style = React.useContext(StyleContext);
   const themeStyles = React.useContext(ThemeContext);
-
   useClickOutsideEvent(wrapperRef, consoleFocused, setConsoleFocused);
 
   // Get all props destructively

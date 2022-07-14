@@ -1,6 +1,14 @@
-import React from "react";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 
-export const TerminalContext = React.createContext(null);
+type TerminalContextValue = {
+  bufferedContent: ReactNode
+  setBufferedContent: Dispatch<SetStateAction<ReactNode>>
+  appendCommandToHistory: (command: string) => void
+  getPreviousCommand: () => string
+  getNextCommand: () => string
+}
+
+export const TerminalContext = React.createContext<TerminalContextValue>(null);
 
 type TerminalContextProviderProps = {
   children: React.ReactNode
@@ -8,7 +16,7 @@ type TerminalContextProviderProps = {
 
 export const TerminalContextProvider = ({ children }: TerminalContextProviderProps) => {
   const [bufferedContent, setBufferedContent] = React.useState("");
-  const [commandsHistory, setCommandsHistory] = React.useState([]);
+  const [commandsHistory, setCommandsHistory] = React.useState<string[]>([]);
   const [historyPointer, setHistoryPointer] = React.useState(null);
 
   React.useEffect(() => {

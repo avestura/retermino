@@ -6,16 +6,17 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { TerminalContext } from "../contexts/TerminalContext";
 
 import Utils from "../common/Utils";
+import { MaybePromise } from "../common/types";
 
 export const useEditorInput = (
     consoleFocused: boolean,
     editorInput: string,
-    setEditorInput: any,
-    setProcessCurrentLine: any,
+    setEditorInput: React.Dispatch<React.SetStateAction<string>>,
+    setProcessCurrentLine: React.Dispatch<React.SetStateAction<boolean>>,
     caretPosition: number,
-    setCaretPosition: any,
-    setBeforeCaretText: any,
-    setAfterCaretText: any,
+    setCaretPosition: React.Dispatch<React.SetStateAction<number>>,
+    setBeforeCaretText: React.Dispatch<React.SetStateAction<string>>,
+    setAfterCaretText: React.Dispatch<React.SetStateAction<string>>,
     enableInput: boolean
 ) => {
     const { getPreviousCommand, getNextCommand } = React.useContext(TerminalContext);
@@ -115,17 +116,19 @@ export const useEditorInput = (
 };
 
 export const useBufferedContent = (
-    processCurrentLine: any,
-    setProcessCurrentLine: any,
+    processCurrentLine: boolean,
+    setProcessCurrentLine: React.Dispatch<React.SetStateAction<boolean>>,
     prompt: string,
-    currentText: any,
-    setCurrentText: any,
-    setCaretPosition: any,
-    setBeforeCaretText: any,
-    setAfterCaretText: any,
-    commands: any,
-    errorMessage: any,
-    defaultHandler: any
+    currentText: string,
+    setCurrentText: React.Dispatch<React.SetStateAction<string>>,
+    setCaretPosition: React.Dispatch<React.SetStateAction<number>>,
+    setBeforeCaretText: React.Dispatch<React.SetStateAction<string>>,
+    setAfterCaretText: React.Dispatch<React.SetStateAction<string>>,
+    commands: Record<string, React.ReactNode | ((args: string) => MaybePromise<React.ReactNode>)>,
+    errorMessage:
+        React.ReactNode |
+        ((command: string, commandArgs?: string) => MaybePromise<React.ReactNode>),
+    defaultHandler: (command: string, commandArgs?: string) => MaybePromise<React.ReactNode>
 ) => {
     const { bufferedContent, setBufferedContent } = React.useContext(TerminalContext);
     const style = React.useContext(StyleContext);
@@ -138,7 +141,7 @@ export const useBufferedContent = (
 
         const processCommand = async (text: string) => {
             const [command, ...rest] = text.trim().split(" ");
-            let output = "";
+            let output: React.ReactNode = "";
 
             if (command === "clear") {
                 setBufferedContent("");
@@ -225,11 +228,13 @@ export const useCurrentLine = (
     prompt: string,
     commands: Record<
         string,
-        React.ReactNode | ((args: string) => React.ReactNode)
+        React.ReactNode | ((args: string) => MaybePromise<React.ReactNode>)
     >,
-    errorMessage: React.ReactNode | ((command: string) => React.ReactNode),
+    errorMessage:
+        React.ReactNode |
+        ((command: string, commandArgs?: string) => MaybePromise<React.ReactNode>),
     enableInput: boolean,
-    defaultHandler: (command: string) => void
+    defaultHandler: (command: string, commandArgs?: string) => MaybePromise<React.ReactNode>
 ) => {
     const style = React.useContext(StyleContext);
     const themeStyles = React.useContext(ThemeContext);

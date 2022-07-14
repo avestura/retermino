@@ -21,7 +21,7 @@
   "rules": {
     "linebreak-style": ["error", "windows"],
     "react/require-default-props": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "react/jsx-filename-extension": [
       2,
       {
@@ -47,7 +47,7 @@
     ],
     "jsx-a11y/aria-role": "off",
     "jsx-a11y/no-static-element-interactions": "off",
-    "quotes": [2, "double", { "avoidEscape": true }],
+    "quotes": "off",
     "comma-dangle": "off",
     "indent": "off",
     "react/jsx-indent": "off"
