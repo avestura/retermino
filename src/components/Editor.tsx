@@ -4,6 +4,7 @@ import { StyleContext } from "../contexts/StyleContext";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { TerminalContext } from "../contexts/TerminalContext";
 import { useCurrentLine, useScrollToBottom } from "../hooks/editor";
+import { MaybePromise } from "../common/types";
 
 export type EditorProps = {
     enableInput: boolean;
@@ -16,7 +17,7 @@ export type EditorProps = {
     >;
     welcomeMessage?: string;
     errorMessage: React.ReactNode | ((command: string) => React.ReactNode);
-    defaultHandler?: (command: string) => void;
+    defaultHandler?: (command: string, comamndArgs?: string) => MaybePromise<React.ReactNode>;
 };
 
 export default function Editor({

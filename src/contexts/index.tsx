@@ -3,7 +3,7 @@ import { StyleContextProvider } from "./StyleContext";
 import { ThemeContextProvider } from "./ThemeContext";
 
 type ContextProviderProps = {
-  children: React.ReactNode
+  children: React.ReactElement
 }
 
 export default function ContextProvider({ children }: ContextProviderProps) {
